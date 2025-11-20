@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('transactions', function (Blueprint $table) {
+            $table->decimal('paid_amount', 8, 2)->change();
+            $table->decimal('balance', 8, 2)->change();
+            $table->decimal('transac_amount', 10, 2)->change();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('transactions', function (Blueprint $table) {
+            $table->integer('paid_amount')->change();
+            $table->integer('balance')->change();
+            $table->integer('transac_amount')->change();
+        });
+    }
+};
